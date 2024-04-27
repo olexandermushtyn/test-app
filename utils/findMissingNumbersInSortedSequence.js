@@ -1,3 +1,10 @@
+/**
+ * Finds the missing numbers in a sorted sequence.
+ *
+ * @param {number[]} array - The sorted array of numbers.
+ * @param {number} length - The length of the array.
+ * @returns {number[]} - An array containing the missing numbers in the sequence.
+ */
 function findMissingNumbersInSortedSequence(array, length) {
   const missingNumbers = []
 

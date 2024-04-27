@@ -1,10 +1,17 @@
 const findMissingNumbersInSortedSequence = require('./utils/findMissingNumbersInSortedSequence')
 
-function findMissingNumbers(arr, length) {
+/**
+ * Finds the missing numbers in a sorted sequence.
+ *
+ * @param {number[]} array - The sorted sequence of numbers.
+ * @param {number} length - The length of the sequence.
+ * @returns {number[]} - An array containing the missing numbers.
+ */
+function findMissingNumbers(array, length) {
   const missingNumbers = []
 
   const middleIndex = Math.floor(length / 2)
-  const middleItem = arr[middleIndex]
+  const middleItem = array[middleIndex]
   const expectedMiddleItem = middleIndex + 1
 
   const middleItemDifference = middleItem - expectedMiddleItem
@@ -14,8 +21,8 @@ function findMissingNumbers(arr, length) {
   // If difference is 0, then all missing numbers are in the end of the sequence
 
   if (middleItemDifference === 1) {
-    const leftPart = arr.slice(0, middleIndex)
-    const rightPart = arr.slice(middleIndex)
+    const leftPart = array.slice(0, middleIndex)
+    const rightPart = array.slice(middleIndex)
 
     const leftMissingNumbers = findMissingNumbersInSortedSequence(
       leftPart,
@@ -28,7 +35,7 @@ function findMissingNumbers(arr, length) {
 
     missingNumbers.push(...leftMissingNumbers, ...rightMissingNumbers)
   } else if (middleItemDifference === 2) {
-    const leftPart = arr.slice(0, middleIndex)
+    const leftPart = array.slice(0, middleIndex)
 
     const leftMissingNumbers = findMissingNumbersInSortedSequence(
       leftPart,
@@ -37,7 +44,7 @@ function findMissingNumbers(arr, length) {
 
     missingNumbers.push(...leftMissingNumbers)
   } else {
-    const rightPart = arr.slice(middleIndex)
+    const rightPart = array.slice(middleIndex)
 
     const rightMissingNumbers = findMissingNumbersInSortedSequence(
       rightPart,
